@@ -1,5 +1,6 @@
 import {Box, Button, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
+import { API_URL } from '../globalconstant';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../store';
@@ -19,7 +20,7 @@ const Auth = () => {
     }));
   };
   const sendRequest = async (type="login") => {
-    const res = await axios.post(`http://localhost:5000/api/user/${type}`,{
+    const res = await axios.post(`${API_URL}/api/user/${type}`,{
       name: inputs.name,
       email:inputs.email,
       password:inputs.password

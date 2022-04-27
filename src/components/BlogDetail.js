@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {InputLabel, TextField,Typography,Box, Button} from "@mui/material";
 import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import { API_URL } from '../globalconstant';
 
 const lableStyles = {mb:1, mt:2, fontSize:'24px',fontWeight:'bold'}
 const BlogDetail = () => {
@@ -22,7 +23,7 @@ const BlogDetail = () => {
   };
 
   const fetchDetails = async () => {
-    const res = await axios.get(`http://localhost:5000/api/blog/${id}`).catch(err => console.log(err))
+    const res = await axios.get(`${API_URL}/api/blog/${id}`).catch(err => console.log(err))
     const data = await res.data;
     return data;
   }
@@ -33,7 +34,7 @@ const BlogDetail = () => {
     })
   },[id]);
   const sendRequest = async () => {
-    const res = await axios.put(`http://localhost:5000/api/blog/update{${id}}`,{
+    const res = await axios.put(`${API_URL}/api/blog/update{${id}}`,{
       title : inputs.title,
       description : inputs.description,
     }).catch(err => console.log(err));

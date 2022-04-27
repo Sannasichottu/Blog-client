@@ -1,10 +1,12 @@
 import React, { useEffect, useState,  } from 'react';
 import axios from "axios";
 import Blog from './Blog';
+import { API_URL } from '../globalconstant';
+
 const Blogs = () => {
   const [blogs,setBlogs] = useState();
   const sendRequest = async () => {
-    const res = await axios.get("http://localhost:5000/api/blog").catch(err => console.log(err));
+    const res = await axios.get(`${API_URL}/api/blog`).catch(err => console.log(err));
     const data = await res.data;
     return data;
   }

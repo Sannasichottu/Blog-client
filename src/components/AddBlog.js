@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_URL } from '../globalconstant';
 import {InputLabel, TextField,Typography,Box, Button} from "@mui/material";
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
@@ -17,7 +18,7 @@ const AddBlog = () => {
   };
 
   const sendRequest = async () => {
-    const res = await axios.post("http://localhost:5000/api/blog/add",{
+    const res = await axios.post(`${API_URL}/api/blog/add`,{
       title:inputs.title,
       description:inputs.description,
       image : inputs.imageURL,
